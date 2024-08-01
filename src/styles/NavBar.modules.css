@@ -1,0 +1,4 @@
+.NavBar>ul {
+    display: flex;
+    flex-direction: row;
+}
