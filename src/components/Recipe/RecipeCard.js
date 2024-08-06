@@ -367,16 +367,19 @@ const recipeMock = {
   ],
 };
 
-const RecipeCard = ({ imageSrc, name, cookTime, servings }) => {
-  const summary = recipeMock.recipes[0].summary;
+const RecipeCard = ({ imageSrc, name, cookTime, servings, summary }) => {
+  
   const sanitizedHTML = DOMPurify.sanitize(summary);
 
   
   return (
    <div className={styles.recipeCard}>
-     <NavLink to=':type' className={styles.cardLink}>
-    <img className={styles.recipeImage} src={recipeMock.recipes[0].image}/>
-    <h3>Servings: {recipeMock.recipes[0].servings}</h3>
+     <NavLink to={`:${name}`} className={styles.cardLink}>
+    <img className={styles.recipeImage} src={imageSrc}/>
+    <span style={{display: "flex", justifyContent: "space-between"}}>
+    <h3>Servings: {servings}</h3>
+    <h3>Cook Time: {cookTime} min</h3>
+    </span>
     <h3>Summary:</h3>
     <p  className={styles.cardLink} dangerouslySetInnerHTML={{__html: sanitizedHTML}}></p>
   </NavLink>
