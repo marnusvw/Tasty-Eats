@@ -1,40 +1,28 @@
-import styles from '../styles/App.module.css'
-import Recipes from "../Data/data";
+import Recipes from "../features/Data/data";
 import { useEffect, useState } from "react";
 import NavBar from "../components/NavBar/NavBar";
+import {
+  createBrowserRouter,
+  createRoutesFromElements,
+  Route,
+  RouterProvider,
+} from "react-router-dom";
+import Root from "../components/root/Root";
+import HomePage from "../pages/home/HomePage";
+import RecipesPage from "../pages/recipesPage/RecipesPage";
 
 function App() {
-  const [recipes, setRecipes] = useState({});
-  const [isLoading, setIsLoading] = useState(false);
-
-  const fetchRandomRecipes = async () => {
-    console.log(isLoading);
-    const recipesFetched = await Recipes.getRecipes();
-    console.log(recipesFetched);
-    setRecipes(recipesFetched);
-    console.log(isLoading);
-  };
-  useEffect(() => {    
-    fetchRandomRecipes();
-    }, []);
-
-
-  
-  return (
-    <div className={styles.App}>
-      <div className="NavBar">
-        <NavBar />
-      </div>
-      <ul>
-        {recipes.recipes?.map((recipe) => (
-          <li>
-            <img src={recipe.image} />
-            {recipe.title}
-          </li>
-        ))}
-      </ul>
-    </div>
+  const router = createBrowserRouter(
+    createRoutesFromElements(
+      <Route path="/" element={<Root />}>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/RecipesPage" element={<HomePage />} />
+        <Route path="RecipesPage/:type" element={<RecipesPage />} />
+      </Route>
+    )
   );
+
+  return <RouterProvider router={router} />;
 }
 
 export default App;
