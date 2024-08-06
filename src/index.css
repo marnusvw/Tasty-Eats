@@ -2,3 +2,11 @@
     margin: 0;
     padding: 10;
 }
+a {
+    color: rgb(102, 100, 100);
+    font-weight: bold;
+}
+
+a:hover {
+    color: rgba(102, 100, 100, 0.5);
+}
