@@ -8,7 +8,7 @@ const recipesContent = [
     'breakfast', 'lunch', 'dinner'
 ];
 const quickMealsContent = [
-    '30 Dinute Dinners', 'Easy Chicken', 'Easy Vegetarian', 'Quick & Healthy' 
+    '30 Minute Dinners', 'Easy Chicken', 'Easy Vegetarian', 'Quick & Healthy' 
 ];
 
 const sundayContent = [
