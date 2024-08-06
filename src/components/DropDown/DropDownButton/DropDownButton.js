@@ -1,9 +1,10 @@
 import React from "react";
 import styles from "./DropDownButton.module.css";
 import { FaChevronDown, FaChevronLeft } from "react-icons/fa";
-const DropDownButton = ({ children, open }) => {
+import { NavLink } from "react-router-dom";
+const DropDownButton = ({ path, children, open }) => {
   return (
-    <div
+    <NavLink to={path}
      
       className={`${styles.dropdown_btn} ${open ? styles.btn_open : null}`}
     >
@@ -11,7 +12,7 @@ const DropDownButton = ({ children, open }) => {
       <span className={styles.toggle_icon}>
         {open ? <FaChevronDown /> : <FaChevronLeft />}
       </span>
-    </div>
+    </NavLink>
   );
 };
 

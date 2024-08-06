@@ -1,13 +1,17 @@
 import React from "react";
 import styles from "./DropDownContent.module.css";
-const DropDownContent = ({ children, open }) => {
+import { NavLink } from "react-router-dom";
+import DropDownItem from "../DropDownItem/DropDownItem";
+const DropDownContent = ({ path, children, open }) => {
   return (
-    <div
-      className={`${styles.dropdown_content_open} ${
+    <div>
+      {<NavLink to={path}
+      className={`${styles.dropdown_content_closed} ${
         open ? styles.content_open : null
       }`}
     >
-      {children}
+      {children?.map(item => <DropDownItem path={path} item={item}/>)}
+    </NavLink>}
     </div>
   );
 };

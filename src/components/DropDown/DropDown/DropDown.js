@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import DropDownButton from "../DropDownButton/DropDownButton";
 import DropDownContent from "../DropDownContent/DropDownContent";
 import styles from "./DropDown.module.css";
-const DropDown = ({ buttonText, content }) => {
+
+const DropDown = ({ path, buttonText, content }) => {
   const [open, setOpen] = useState(false);
+
   const toggleDropdown = () => {
     setOpen((open) => !open);
   };
@@ -12,10 +14,10 @@ const DropDown = ({ buttonText, content }) => {
 
   return (
     <div className={styles.dropdown} onMouseEnter={() => setOpen(true)} onMouseLeave={() => setOpen(false)}>
-      <DropDownButton open={open}>
+      <DropDownButton path={path} open={open}>
         {buttonText}
       </DropDownButton>
-       <DropDownContent open={open}>{content}</DropDownContent>
+       <DropDownContent path={path} open={open}>{content}</DropDownContent>
     </div>
   );
 };

@@ -1,4 +1,4 @@
-.dropdown_content_open {
+.dropdown_content_closed {
   position: absolute;
   min-width: 100%;
   display: none;
@@ -6,7 +6,7 @@
   align-items: center;
   padding: 1rem;
   padding-top: 2rem;
-  background-color: rgba(256, 256, 256, 0.2);
+  background-color: rgb(256, 256, 256);
   border-radius: 0.1rem;
   border: 1px solid lightgray;
   box-shadow: rgba(149, 157, 165, 0.8) 0px 8px 24px;
@@ -24,8 +24,10 @@
   height: 0;
 }
 
-.content_open {
+.content_open{
   transform: translateY(0);
   display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
   pointer-events: all;
 }
