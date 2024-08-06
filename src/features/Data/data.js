@@ -10,7 +10,7 @@ import react from "react";
 //     "x-rapidapi-host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
 //   },
 // };
-const baseUrl = 'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/random?';
+const baseUrl = `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/random?`;
 const number = "number=10";
 const options = {
 	method: 'GET',
@@ -20,26 +20,22 @@ const options = {
 	}
 };
 const Recipes = {
-  async getRecipes() {
-    const endpoint = "/random?";
-    const fullUrl = baseUrl + endpoint + number;
-    try {
-      const response = await fetch(fullUrl, options);
-      const result = await response.json();
-      console.log(result);
-      return result;
-    } catch (error) {
-      console.error(error);
+  async getRecipes(type ) {
+    let fullUrl ="";
+    if (type  === undefined ){ 
+      fullUrl = baseUrl + number;
     }
-  },
-  async getRecipesByType(type) {
-    const endpoint = `/complexSearch?query=main%20&type=${type}%20course&instructionsRequired=true&fillIngredients=false&addRecipeInformation=false&addRecipeInstructions=false&addRecipeNutrition=false&maxReadyTime=45&ignorePantry=true&sort=max-used-ingredients&offset=0&`;
-    const fullUrl = baseUrl + endpoint + number;
+    else {
+      const endpoint = `tags=${type.toLowerCase()}&`
+      fullUrl = baseUrl + endpoint + number;
+      
+    }
     try {
       const response = await fetch(fullUrl, options);
       const result = await response.json();
+
       console.log(result);
-      return result;
+      return result.recipes;
     } catch (error) {
       console.error(error);
     }

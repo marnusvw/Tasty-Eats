@@ -19,11 +19,8 @@ function App() {
     createRoutesFromElements(
       <Route path="/" element={<Root />}>
         <Route path="/" element={<HomePage />} />
-        <Route path="/RecipesPage" element={<HomePage />} />
+        <Route path="/RecipesPage" element={<RecipesFilterPage />} />
         <Route path="RecipesPage/:type" element={<RecipesFilterPage />} />
-        <Route path="Quick and Easy" element={<QuickRecipesPage />}/>
-        <Route path="Sunday Meals" element={<SundayMealsPage />}/>
-        <Route path="Diet Meals" element={<DietMealsPage />}/>
       </Route>
     )
   );
