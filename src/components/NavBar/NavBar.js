@@ -11,7 +11,7 @@ const quickMealsContent = [
     '30 Dinute Dinners', 'Easy Chicken', 'Easy Vegetarian', 'Quick & Healthy' 
 ];
 
-const roastContent = [
+const sundayContent = [
     'Sunday Chicken', 'Sunday Roasts', 'Soups'
 ]
 
@@ -25,9 +25,9 @@ const NavBar = () => {
         <div className={styles.NavBar}>
                 <NavLink  to='/' ><img className={styles.logo}  src={logo}/></NavLink>
                 <DropDown path='RecipesPage' buttonText="Recipes" content={recipesContent}/>
-                <DropDown path='RecipesPage' buttonText="Quick & Easy" content={quickMealsContent}/>
-                <DropDown path='RecipesPage' buttonText="Sunday Meals" content={roastContent}/>
-                <DropDown path='RecipesPage' buttonText="Diet Meals" content={dietContent}/>
+                <DropDown path='Quick and Easy' buttonText="Quick & Easy" content={quickMealsContent}/>
+                <DropDown path='Sunday Meals' buttonText="Sunday Meals" content={sundayContent}/>
+                <DropDown path='Diet Meals' buttonText="Diet Meals" content={dietContent}/>
              
         </div>
     )

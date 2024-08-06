@@ -9,7 +9,10 @@ import {
 } from "react-router-dom";
 import Root from "../components/root/Root";
 import HomePage from "../pages/home/HomePage";
-import RecipesPage from "../pages/recipesPage/RecipesPage";
+import RecipesPage from "../pages/recipes/RecipesPage";
+import QuickRecipesPage from "../pages/quickRecipes/QuickRecipesPage";
+import SundayMealsPage from "../pages/sundayMeals/SundayMealsPage";
+import DietMealsPage from "../pages/dietMeals/DietMealsPage";
 
 function App() {
   const router = createBrowserRouter(
@@ -18,6 +21,9 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/RecipesPage" element={<HomePage />} />
         <Route path="RecipesPage/:type" element={<RecipesPage />} />
+        <Route path="Quick and Easy" element={<QuickRecipesPage />}/>
+        <Route path="Sunday Meals" element={<SundayMealsPage />}/>
+        <Route path="Diet Meals" element={<DietMealsPage />}/>
       </Route>
     )
   );
