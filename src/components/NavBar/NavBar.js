@@ -5,7 +5,7 @@ import logo from '../../assets/logo.png'
 import { Link, NavLink } from "react-router-dom";
 
 const recipesContent = [
-    'breakfast', 'lunch', 'dinner'
+    'Breakfast', 'Lunch', 'Dinner'
 ];
 const quickMealsContent = [
     '30 Minute Dinners', 'Easy Chicken', 'Easy Vegetarian', 'Quick & Healthy' 
@@ -22,13 +22,16 @@ const NavBar = () => {
     
    
     return (
-        <div className={styles.NavBar}>
+        <div className={styles.Nav}>
+            <div className={styles.NavBar}>
                 <NavLink  to='/' ><img className={styles.logo}  src={logo}/></NavLink>
                 <DropDown path='RecipesPage' buttonText="Recipes" content={recipesContent}/>
-                <DropDown path='RecipesPage' buttonText="Quick & Easy" content={quickMealsContent}/>
-                <DropDown path='RecipesPage' buttonText="Sunday Meals" content={sundayContent}/>
-                <DropDown path='RecipesPage' buttonText="Diet Meals" content={dietContent}/>
+                <DropDown path='Quick and Easy' buttonText="Quick & Easy" content={quickMealsContent}/>
+                <DropDown path='Sunday Meals' buttonText="Sunday Meals" content={sundayContent}/>
+                <DropDown path='Diet Meals' buttonText="Diet Meals" content={dietContent}/>
              
+        </div>
+        <Link target="_blank" to='https://github.com/marnusvw/Tasty-Eats/tree/master'>Github Repository</Link>
         </div>
     )
 }
