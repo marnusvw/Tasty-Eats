@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./RecipeCard.module.css";
 import DOMPurify from 'dompurify';
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 
 const recipeMock = {
   recipes: [
@@ -367,14 +367,17 @@ const recipeMock = {
   ],
 };
 
-const RecipeCard = ({ imageSrc, name, cookTime, servings, summary }) => {
+const RecipeCard = ({recipe, imageSrc, name, cookTime, servings, summary, onRecipeSelect }) => {
   
   const sanitizedHTML = DOMPurify.sanitize(summary);
+  const location = useLocation();
+  const navigate = useNavigate();
 
+  const baseUrl = location.pathname === '/' ? 'RecipesPage/' : '';
   
   return (
    <div className={styles.recipeCard}>
-     <NavLink to={`:${name}`} className={styles.cardLink}>
+     <NavLink onClick={(recipe) => onRecipeSelect(recipe)} to={baseUrl + name}  className={styles.cardLink}>
     <img className={styles.recipeImage} src={imageSrc}/>
     <span style={{display: "flex", justifyContent: "space-between"}}>
     <h3>Servings: {servings}</h3>
@@ -389,3 +392,4 @@ const RecipeCard = ({ imageSrc, name, cookTime, servings, summary }) => {
 };
 
 export default RecipeCard;
+
