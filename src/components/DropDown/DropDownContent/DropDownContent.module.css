@@ -17,6 +17,7 @@
   transform: translateY(-5%);
   transition:  300ms ease-in-out;
   pointer-events: none;
+  background-color: wheat;
 }
 
 .dropdown_content::-webkit-scrollbar {

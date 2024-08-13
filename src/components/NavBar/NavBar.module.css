@@ -1,8 +1,16 @@
+.Nav {
+    display: flex;
+    flex-direction: row;
+    background-color: pink;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 2rem;
+}
+
 .NavBar {
     margin: 1rem;
     display: flex;
     flex-direction: row;
-    background-color: pink;
     padding: 0;
     margin: 0;
 }

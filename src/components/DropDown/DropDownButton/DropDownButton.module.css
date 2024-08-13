@@ -11,10 +11,12 @@
 .toggle_icon {
   display: flex;
   align-items: center;
+  
   justify-content: center;
   margin-left: 1rem;
 }
 
 .btn_open {
   background-color: aliceblue;
+  
 }
