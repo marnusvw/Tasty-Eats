@@ -1,10 +1,10 @@
 import { combineReducers } from "redux";
 import {configureStore} from '@reduxjs/toolkit'
 import favoriteRecipesReducer from '../features/favoriteRecipes/favoriteRecipesSlice'
-import { allRecipesReducer } from "../features/allRecipes/allRecipesSlice";
+import { allRecipesSlice } from "../features/allRecipes/allRecipesSlice";
 
 const reducers = {
-    allRecipes: allRecipesReducer,
+    allRecipes: allRecipesSlice,
 }
 const rootReducer = combineReducers(reducers)
 
