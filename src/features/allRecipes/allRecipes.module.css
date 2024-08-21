@@ -1,0 +1,6 @@
+.recipes_container {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: 19vw 19vw 19vw 19vw 19vw;
+    margin: 1rem 1rem
+}
