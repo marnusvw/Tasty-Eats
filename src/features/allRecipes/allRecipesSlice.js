@@ -1,44 +1,51 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { selectSearchTerm } from "../searchTerm/searchTermSlice";
 import Recipes from "../Data/data";
 
-export const loadRecipes = createAsyncThunk("allRecipes/loadRecipes", async () => {
-  const allRecipes = await Recipes.getRanadomRecipes();
+export const loadRecipes = createAsyncThunk("allRecipes/loadRecipes", async (type) => {
+  const allRecipes = await Recipes.getRecipes(type);
+  console.log("Hello")
+  console.log(allRecipes)
   return allRecipes;
 });
 
-const initialState = [];
 
 export const allRecipesSlice = createSlice({
   name: "allRecipes",
   initialState: {
     recipes: [],
-    isLoading: false,
+    isLoading: false, 
     hasError: false,
   },
   reducers: {},
-  extraReducers: {
-    [loadRecipes.pending]: (state, action) => {
+  extraReducers: (builder) => {
+    builder.addCase(loadRecipes.pending, (state) => {
       state.isLoading = true;
       state.hasError = false;
-    },
-    [loadRecipes.fulfilled]: (state, action) => {
+    })
+    .addCase(
+    loadRecipes.fulfilled, (state, action) => {
       state.recipes = action.payload;
       console.log("Hello")
       state.isLoading = false;
       state.hasError = false;
-    },
-    [loadRecipes.rejected]: (state, action) => {
+    })
+    .addCase(
+    loadRecipes.rejected, (state) => {
       state.isLoading = false;
       state.hasError = true;
-    }
+    })
   }
 });
 
 export const selectAllRecipes = (state) => state.allRecipes.recipes
 
-export function getFilteredRecipes(recipes, searchTerm) {
-  return recipes?.filter((recipe) =>
-    recipe.name.toLowerCase().includes(searchTerm.toLowerCase())
+export const getFilteredRecipes = (state) =>  {
+  const allRecipes = selectAllRecipes(state);
+  const searchTerm = selectSearchTerm(state);
+
+  return allRecipes.filter((recipe) =>
+    recipe.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
 }
 
