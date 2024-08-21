@@ -20,22 +20,13 @@ const options = {
 	}
 };
 const Recipes = {
-  async getRanadomRecipes() {
-    const fullUrl = `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/random?number=20`
-    try {
-      const response = await fetch(fullUrl, options);
-      const jsonResponse = await response.json();
-      console.log(jsonResponse.recipes)
-      return jsonResponse.recipes;
-    }
-    catch (e) {
-      console.error(e)
-    }
-  },
+
   async getRecipes(type ) {
     let fullUrl ="";
-    if (type  === "unknown" ){ 
+    console.log("In Data.GetRecipes")
+    if (!type){ 
       fullUrl = baseUrl + number;
+      console.log('Empty string')
     }
     else {
       const endpoint = `tags=${type.toLowerCase()}&`
@@ -46,7 +37,6 @@ const Recipes = {
       const response = await fetch(fullUrl, options);
       const result = await response.json();
 
-      console.log(result);
       return result.recipes;
     } catch (error) {
       console.error(error);
