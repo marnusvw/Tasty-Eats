@@ -1,17 +1,29 @@
 .recipeCard {
-    width: 20rem;
-    text-wrap: wrap;
-    border: 1px solid rgb(102, 100, 100);
-    margin: 1rem;
-    padding: 1rem;
-    background-color: rgb(167, 178, 187);
+  display: grid;
+  grid-template-rows: 15rem 4rem 1rem;
+  width: 20rem;
+  height: 20rem;
+  text-wrap: wrap;
+  border: 1px solid rgb(102, 100, 100);
+  padding: 1rem;
+  background-color: rgb(167, 178, 187);
+  margin-bottom: 1rem;
 }
-
+h2 {
+  font-size: 1.2rem;
+}
 .cardLink {
-    text-decoration: none;
-    color: black;
+  text-decoration: none;
+  color: black;
 }
 
 .recipeImage {
-    max-width: 100%;
+  width: 20rem;
+  height: 15rem;
+}
+.recipe_info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
 }
