@@ -8,58 +8,51 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import Root from "../components/root/Root";
-import HomePage from "../pages/home/HomePage";
 import QuickRecipesPage from "../pages/quickRecipes/QuickRecipesPage";
 import SundayMealsPage from "../pages/sundayMeals/SundayMealsPage";
 import DietMealsPage from "../pages/dietMeals/DietMealsPage";
 import { loadRecipes } from "../features/allRecipes/allRecipesSlice";
 import RecipePage from "../pages/recipePage/RecipePage";
 import AllRecipes from "../features/allRecipes/AllRecipes";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { selectMealType } from "../features/MealType/mealTypeSlice";
 
 function App() {
   const dispatch = useDispatch();
-  const [type, setType] = useState('breakfast')
+  const type = useSelector(selectMealType)
+
   useEffect(() => {
     dispatch(loadRecipes(type));
-  }, [dispatch]);
+  }, [dispatch, type]);
 
+ 
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<Root />}>
-        <Route path="/" element={<AllRecipes />} />
+        <Route
+          path="/"
+          element={<AllRecipes />}
+        />
         {/*Base Routes*/}
         <Route path="/RecipesPage" element={<AllRecipes />} />
         <Route
           path="Quick and Easy"
-          element={<QuickRecipesPage dispatch={dispatch} />}
+          element={<QuickRecipesPage />}
         />
-        <Route
-          path="Sunday Meals"
-          element={<SundayMealsPage dispatch={dispatch} />}
-        />
-        <Route
-          path="Diet Meals"
-          element={<DietMealsPage dispatch={dispatch} />}
-        />
+        <Route path="Sunday Meals" element={<SundayMealsPage />} />
+        <Route path="Diet Meals" element={<DietMealsPage />} />
 
         {/* Dynamic Routes */}
         <Route
           path="/RecipesPage/:type"
-          element={<RecipePage dispatch={dispatch} />}
+          element={
+            <AllRecipes />
+          }
         />
-        <Route
-          path="Quick and Easy/:type"
-          element={<QuickRecipesPage dispatch={dispatch} />}
-        />
-        <Route
-          path="Sunday Meals/:type"
-          element={<SundayMealsPage dispatch={dispatch} />}
-        />
-        <Route
-          path="Diet Meals/:type"
-          element={<DietMealsPage dispatch={dispatch} />}
-        />
+        <Route path="/RecipesPage/:type/:recipeTitle" element={<RecipePage />}/>
+        <Route path="Quick and Easy/:type" element={<QuickRecipesPage />} />
+        <Route path="Sunday Meals/:type" element={<SundayMealsPage />} />
+        <Route path="Diet Meals/:type" element={<DietMealsPage />} />
       </Route>
     )
   );
