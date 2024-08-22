@@ -10,3 +10,6 @@ a {
 a:hover {
     color: rgba(102, 100, 100, 0.5);
 }
+li {
+    list-style-type: none;
+}
