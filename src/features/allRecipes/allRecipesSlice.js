@@ -1,11 +1,9 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { selectSearchTerm } from "../searchTerm/searchTermSlice";
+import { selectSearchTerm } from "../MealType/mealTypeSlice";
 import Recipes from "../Data/data";
 
 export const loadRecipes = createAsyncThunk("allRecipes/loadRecipes", async (type) => {
   const allRecipes = await Recipes.getRecipes(type);
-  console.log("Hello")
-  console.log(allRecipes)
   return allRecipes;
 });
 
@@ -14,6 +12,7 @@ export const allRecipesSlice = createSlice({
   name: "allRecipes",
   initialState: {
     recipes: [],
+    id: '',
     isLoading: false, 
     hasError: false,
   },
@@ -26,7 +25,6 @@ export const allRecipesSlice = createSlice({
     .addCase(
     loadRecipes.fulfilled, (state, action) => {
       state.recipes = action.payload;
-      console.log("Hello")
       state.isLoading = false;
       state.hasError = false;
     })
@@ -39,6 +37,12 @@ export const allRecipesSlice = createSlice({
 });
 
 export const selectAllRecipes = (state) => state.allRecipes.recipes
+
+export const getSelectedRecipe = (state) => {
+  const allRecipes = selectAllRecipes(state);
+
+
+}
 
 export const getFilteredRecipes = (state) =>  {
   const allRecipes = selectAllRecipes(state);
