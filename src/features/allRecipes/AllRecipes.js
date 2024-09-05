@@ -5,7 +5,7 @@ import Spinner from "../../components/spinner";
 import RecipeCard from "../../components/Recipe/RecipeCard";
 import styles from "./allRecipes.module.css";
 import { useParams } from "react-router-dom";
-import { selectMealType, setMealTypes } from "../MealType/mealTypeSlice";
+import { selectMealType, setMealType } from "../MealType/mealTypeSlice";
 
 const AllRecipes = ({ onChangeType}) => {
   const dispatch = useDispatch()

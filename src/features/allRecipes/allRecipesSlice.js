@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { selectSearchTerm } from "../MealType/mealTypeSlice";
+import { selectSearchTerm } from "../searchTerm/searchTermSlice"; 
 import Recipes from "../Data/data";
 
 export const loadRecipes = createAsyncThunk("allRecipes/loadRecipes", async (type) => {

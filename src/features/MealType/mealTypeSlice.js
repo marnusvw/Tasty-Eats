@@ -1,16 +1,16 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 export const mealTypeSlice = createSlice({
-  name: "search",
+  name: "type",
   initialState: "",
   reducers: {
-    setMealTyoe: (state, action) => (action.payload ? state = action.payload : state = ''),
-    clearMealTyoe: (state) => (state = ""),
+    setMealType: (state, action) => (action.payload ? state = action.payload : state = ''),
+    clearMealType: (state) => (state = ""),
   },
 });
 
-export const { setMealTyoe, clearMealTyoe } = mealTypeSlice.actions;
+export const { setMealType, clearMealType } = mealTypeSlice.actions;
 
-export const selectMealTyoe = (state) => state.search;
+export const selectMealType = (state) => state.type;
 
 export default mealTypeSlice.reducer;
