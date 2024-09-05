@@ -4,8 +4,8 @@ export const mealTypeSlice = createSlice({
   name: "type",
   initialState: "",
   reducers: {
-    setMealType: (state, action) => (action.payload ? state = action.payload : state = ''),
-    clearMealType: (state) => (state = ""),
+    setMealType: (state, action) => (action.payload ? action.payload : ''),
+    clearMealType: (state) => "",
   },
 });
 

@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getFilteredRecipes, selectAllRecipes } from "./allRecipesSlice";
+import { selectAllRecipes } from "./allRecipesSlice";
 import Spinner from "../../components/spinner";
 import RecipeCard from "../../components/Recipe/RecipeCard";
 import styles from "./allRecipes.module.css";
 import { useParams } from "react-router-dom";
-import { selectMealType, setMealType } from "../MealType/mealTypeSlice";
+import {  setMealType } from "../MealType/mealTypeSlice";
 
 const AllRecipes = ({ onChangeType}) => {
   const dispatch = useDispatch()

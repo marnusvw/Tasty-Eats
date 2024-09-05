@@ -11,19 +11,29 @@ import Root from "../components/root/Root";
 import QuickRecipesPage from "../pages/quickRecipes/QuickRecipesPage";
 import SundayMealsPage from "../pages/sundayMeals/SundayMealsPage";
 import DietMealsPage from "../pages/dietMeals/DietMealsPage";
-import { loadRecipes } from "../features/allRecipes/allRecipesSlice";
+import { loadRecipes, searchFilteredRecipes } from "../features/allRecipes/allRecipesSlice";
 import RecipePage from "../pages/recipePage/RecipePage";
 import AllRecipes from "../features/allRecipes/AllRecipes";
 import { useDispatch, useSelector } from "react-redux";
 import { selectMealType } from "../features/MealType/mealTypeSlice";
+import { selectSearchTerm } from "../features/searchTerm/searchTermSlice";
 
 function App() {
   const dispatch = useDispatch();
   const type = useSelector(selectMealType)
+  const term = useSelector(selectSearchTerm)
 
   useEffect(() => {
-    dispatch(loadRecipes(type));
-  }, [dispatch, type]);
+    if (!term){
+      console.log("Type: " + type)
+      dispatch(loadRecipes(type));
+    }
+    else {
+      console.log("App Term: " + term)
+
+      dispatch(searchFilteredRecipes(term))
+    }
+  }, [dispatch, type,term]);
 
  
   const router = createBrowserRouter(
